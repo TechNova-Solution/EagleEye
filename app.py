@@ -111,8 +111,8 @@ def download_csv_generate():
     """ This function allow user to download the results of the dataset
         in .csv format 
     """
-    #uploads = os.path.join(current_app.root_path, app.config['UPLOAD_FOLDER'])
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename='dataGenerate.csv')
+    uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
+    return send_from_directory(directory=uploads, path='dataGenerate.csv', as_attachment=True)
 
 
 if __name__ == "__main__":
