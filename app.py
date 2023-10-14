@@ -99,7 +99,6 @@ def generator():
                 if data != '':
                     data += ","
                 data += str(result[k])
-
             with open('upload/dataGenerate.csv', 'w') as f:
                 f.write(data)
                 f.close()
