@@ -34,7 +34,13 @@
     }
 
     #head {
-      background: #f4f4f4 url("{{ url_for('static', filename='img/bg-e-2.jpg') }}") top center;
+      /* background: #f4f4f4 url("{{ url_for('static', filename='img/grass2.jpeg') }}") top center; */
+      background-image: url("{{ url_for('static', filename='img/bg-e-eye.jpg') }}");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 20px;
     }
   </style>
 
@@ -68,35 +74,40 @@
     <div class="container">
       <div class="row section topspace">
         <div class="col-md-12">
-          <p class="lead text-center text-muted">Generate set of data that applies to the Benford's. </p>
+          <p class="water-background lead text-center text-muted">Generate set of data that applies to the Benford's.
+          </p>
         </div>
       </div>
-      <form action="{{ url_for('generator') }}" method="POST">
-        Minimum <input type="number" name="dataMin" value="{{ request.form.dataMin }}" min="1" max="4" size="2"
-          pattern="[1-9]\d{0,2}">
-        Maximum <input type="number" name="dataMax" value="{{ request.form.dataMax }}" min="10" max="50" size="2">
-        Data Size <input type="number" name="dataSize" value="{{ request.form.dataSize }}" min="1" max="100"
-          pattern="[1-9]\d*">
-        <input type="submit" value="Generate" class="btn-success btn-lg">
+      <form action="{{ url_for('generator') }}" method="POST" style="margin-left: 30%;">
+        <div class="form-group">
+          Minimum <input type="number" name="dataMin" value="{{ request.form.dataMin }}" min="1" max="4" size="2"
+            pattern="[1-9]\d{0,2}">
+          Maximum <input type="number" name="dataMax" value="{{ request.form.dataMax }}" min="10" max="50" size="2"
+            pattern="[1-9]\d*">
+          Data Size <input type="number" name="dataSize" value="{{ request.form.dataSize }}" min="1" max="100"
+            pattern="[1-9]\d*">
+        </div>
+        <input type="submit" value="Generate" class="btn-success btn-lg text-center" style="margin-left: 20%;">
       </form>
 
     </div><!-- / section -->
 
 
-    <div class="container">
+    <div class="containe water-background">
       <div class="row section recentworks topspace">
 
         <h2 class="section-title"><span>Data Generated</span></h2>
 
         <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="tab-pane"
-          style="width: 50%;border: 6px dotted green;margin-left: 30%;margin-bottom: 6%;">
+          style="width: 50%;border: 6px dotted rgb(206, 217, 206);margin-left: 30%;margin-bottom: 6%;">
           {% for value in result%}
           <p class="small text-center"><b>{{ value }}</b></p>
           {% endfor %}
         </div>
       </div>
       <div class="container" style="margin:3%;margin-left: 40%;">
-        <a href="{{ url_for('download_csv_generate') }}" class="btn-lg btn-dark">Download .csv</a>
+        <a href="{{ url_for('download_csv_generate') }}" class="btn-lg btn-dark" style="margin-left: 10%;">Download
+          .csv</a>
       </div>
     </div>
     </div>

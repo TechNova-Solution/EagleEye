@@ -27,7 +27,13 @@
   <link href="{{ url_for('static', filename='css/head.css') }}" rel="stylesheet">
   <style>
     #head {
-      background: #f4f4f4 url("{{ url_for('static', filename='img/bg-e-eye.jpg') }}") top center;
+      /* background: #f4f4f4 url("{{ url_for('static', filename='img/bg-e-eye.jpg') }}") top center; */
+      background-image: url("{{ url_for('static', filename='img/bg-e-eye.jpg') }}");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 20px;
     }
   </style>
 
@@ -63,7 +69,8 @@
     <div class="container">
       <div class="row section topspace">
         <div class="col-md-12">
-          <p class="lead text-center text-muted">Benford's Law is an observation about the leading digits of the numbers
+          <p class="water-background lead text-center text-muted">
+            Benford's Law is an observation about the leading digits of the numbers
             found in real-world data sets. Intuitively, one might expect that the leading digits of these numbers would
             be uniformly distributed, so that each of the digits from 1 to 9 are equally likely to appear. In fact, it
             is often the case that 1 occurs more frequently than 2, 2 more frequently than 3, and so on. This
@@ -75,6 +82,7 @@
 
       <div class="row section featured topspace">
         <h2 class="section-title"><span>Upload CSV file</span></h2>
+        <!-- <div class="water-background"> -->
         <form action="{{ url_for('uploader') }}" method="POST" enctype="multipart/form-data" style="margin-left: 40%;">
           <div class="form-group">
             <input type="file" class="form-control-file " id="exampleFormControlFile1" name="file">
@@ -82,6 +90,7 @@
           </div>
           <input type="submit" value="Upload" class="btn-success btn-lg text-center">
         </form>
+        <!-- </div> -->
       </div> <!-- / section -->
 
 
@@ -91,7 +100,7 @@
         {% if check== True %}
         <h3 class="section-title" style="color:green;">This Data Applies to the Benford Law</h3>
         {% elif check == False %}
-        <h3 class="section-title" style="color:firebrick;">This Data Not Applies to the Benford Law</h3>
+        <h3 class="section-title" style="color:firebrick;">This Data Does Not Conform to the Benford Law</h3>
         {% endif%}
         <table class="table table-bordered" id="demo">
           <thead>
@@ -121,7 +130,7 @@
 
       </div> <!-- /results -->
 
-      <div class="row section recentworks topspace">
+      <div class="row section recentworks topspace water-background">
 
         <h2 class="section-title"><span>Results Chart</span></h2>
 
